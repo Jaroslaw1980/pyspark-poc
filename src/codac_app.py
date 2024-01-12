@@ -2,6 +2,7 @@ from logging import Logger
 
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import col
+from pyspark.sql.types import StructType
 
 
 class CodacApp:
@@ -16,10 +17,12 @@ class CodacApp:
         self.spark = spark
         self.logger = logger
 
-    def load_data(self, file_path: str) -> DataFrame:
+    def load_data(self, file_path: str, schema: StructType) -> DataFrame:
         """Merhod used to load data from csv file to dataframe
         :param file_path: path to file with data
         :type file_path: str
+        :param schema: schema for data to load
+        :type schema: StructType
         :return return dataframe containing data from loaded file
         :rtype pyspark.sql.Dataframe
         """
@@ -28,7 +31,7 @@ class CodacApp:
         try:
             df = self.spark.read.format(file_format) \
                 .option("header", True) \
-                .option("Inferschema", True) \
+                .schema(schema) \
                 .load(file_path)
             self.logger.info(f"{file_format} loaded with {str(df.count())} rows")
             return df

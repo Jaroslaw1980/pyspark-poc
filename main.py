@@ -2,6 +2,7 @@ from src.codac_app import CodacApp
 from src.session import start_session
 from src.utils import create_logger, parse_arguments, check_if_file_exists
 from src.variables import OUTPUT_PATH
+from src.schemas import Schemas
 
 
 def main():
@@ -15,10 +16,10 @@ def main():
     codac = CodacApp(spark, logger)
 
     if check_if_file_exists(args.file_one, args.file_two):
-        df1 = codac.load_data(args.file_one)
+        df1 = codac.load_data(args.file_one, Schemas.dataset_one_schema)
         df1 = codac.drop_column(df1, ['first_name', 'last_name'])
 
-        df2 = codac.load_data(args.file_two)
+        df2 = codac.load_data(args.file_two, Schemas.dataset_two_schema)
         df2 = codac.drop_column(df2, ['cc_n'])
 
         df3 = codac.join_dfs(df1, df2, on='id')
