@@ -1,8 +1,8 @@
 from src.codac_app import CodacApp
+from src.schemas import Schemas
 from src.session import start_session
 from src.utils import create_logger, parse_arguments, check_if_file_exists
 from src.variables import OUTPUT_PATH
-from src.schemas import Schemas
 
 
 def main():
