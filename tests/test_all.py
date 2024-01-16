@@ -2,6 +2,15 @@ import pytest
 from chispa.dataframe_comparer import assert_df_equality
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
+from src.codac_app import CodacApp
+from src.utils import create_logger
+
+
+@pytest.fixture()
+def codac(spark_session):
+    logger = create_logger()
+    return CodacApp(spark_session, logger)
+
 
 @pytest.fixture()
 def schema():
