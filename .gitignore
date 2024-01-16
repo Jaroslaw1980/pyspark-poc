@@ -1,7 +1,8 @@
 build/
-__pycache__/
+__pycache__
 .pytest_cache/
 .vscode/
-tests/__pycache__/
+*/__pycache__
 output.json
 pytest_html_report.html
+/logs/*.log
