@@ -42,7 +42,7 @@ def parse_arguments() -> argparse.Namespace:
                         default=PATH_FILE_ONE)
     parser.add_argument('--file_two', type=str, help='Path to file two',
                         default=PATH_FILE_TWO)
-    parser.add_argument('--countries', type=str, help='Countries to filter',
+    parser.add_argument('--countries', type=str, nargs='+', help='Countries to filter',
                         default=['Netherland', 'United Kingdom'])
 
     args = parser.parse_args()
