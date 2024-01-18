@@ -4,3 +4,7 @@
 18-01-2024 16:34:48 - INFO - Renaming columns
 18-01-2024 16:34:48 - INFO - Dataframe saved to C:\Projects\codac\client_data
 18-01-2024 16:34:49 - INFO - Program is finished
+18-01-2024 19:18:37 - INFO - Filtering column: first_name by ['Hosea', 'Rebekah']
+18-01-2024 19:18:40 - INFO - Droping ['id'] from dataframe
+18-01-2024 19:18:40 - INFO - Renaming columns
+18-01-2024 19:18:40 - INFO - Joining two dataframes

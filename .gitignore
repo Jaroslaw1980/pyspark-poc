@@ -6,5 +6,6 @@ __pycache__
 output.json
 pytest_html_report.html
 /logs/*.log
+/logs/*.log.*
 .idea/
 archive
