@@ -1,29 +1,16 @@
-15-01-2024 16:46:19 - INFO - Filtering country by ['Netherland', 'United Kingdom']
-15-01-2024 16:46:19 - INFO - Renaming columns
-15-01-2024 16:46:21 - INFO - Dataframe saved to C:\Projects\codac\client_data\result.csv
-15-01-2024 16:46:21 - INFO - Program is finished
-15-01-2024 16:50:24 - INFO - Loading file: C:\Projects\codac\raw_data\dataset_one.csv
-15-01-2024 16:50:28 - INFO - csv loaded with 1000 rows
-15-01-2024 16:50:28 - INFO - Droping ['first_name', 'last_name'] from dataframe
-15-01-2024 16:50:28 - INFO - Loading file: C:\Projects\codac\raw_data\dataset_two.csv
-15-01-2024 16:50:28 - INFO - csv loaded with 1000 rows
-15-01-2024 16:50:28 - INFO - Droping ['cc_n'] from dataframe
-15-01-2024 16:50:28 - INFO - Joining two dataframes
-15-01-2024 16:50:28 - INFO - Filtering country by ['Netherland', 'United Kingdom']
-15-01-2024 16:50:28 - INFO - Renaming columns
-15-01-2024 16:50:31 - INFO - Dataframe saved to C:\Projects\codac\client_data\result.csv
-15-01-2024 16:50:31 - INFO - Program is finished
-16-01-2024 12:27:18 - INFO - Filtering first_name by ['Hosea', 'Rebekah']
-16-01-2024 12:27:23 - INFO - Droping ['id'] from dataframe
-16-01-2024 12:27:23 - INFO - Renaming columns
-16-01-2024 12:27:23 - INFO - Joining two dataframes
-16-01-2024 12:41:39 - INFO - Filtering first_name by ['Hosea', 'Rebekah']
-16-01-2024 12:41:42 - INFO - Droping ['id'] from dataframe
-16-01-2024 12:41:42 - INFO - Droping ['id'] from dataframe
-16-01-2024 12:41:42 - INFO - Renaming columns
-16-01-2024 12:41:42 - INFO - Renaming columns
-16-01-2024 12:41:42 - INFO - Renaming columns
-16-01-2024 12:41:42 - INFO - Joining two dataframes
-16-01-2024 12:41:42 - INFO - Joining two dataframes
-16-01-2024 12:41:42 - INFO - Joining two dataframes
-16-01-2024 12:41:42 - INFO - Joining two dataframes
+16-01-2024 14:34:48 - INFO - Dataframe saved to C:\Projects\codac\client_data\result.csv
+16-01-2024 14:34:48 - INFO - Program is finished
+17-01-2024 11:17:15 - INFO - Loading file: C:\Projects\codac\raw_data\dataset_one.csv
+17-01-2024 11:17:21 - INFO - csv loaded with 1000 rows
+17-01-2024 11:17:21 - INFO - Droping ['first_name', 'last_name'] from dataframe
+17-01-2024 11:17:21 - INFO - Loading file: C:\Projects\codac\raw_data\dataset_two.csv
+17-01-2024 11:17:21 - INFO - csv loaded with 1000 rows
+17-01-2024 11:17:21 - INFO - Droping ['cc_n'] from dataframe
+17-01-2024 11:17:21 - INFO - Joining two dataframes
+17-01-2024 11:17:21 - INFO - Filtering country by ['Netherland', 'United Kingdom']
+17-01-2024 11:17:21 - INFO - Renaming columns
+17-01-2024 11:17:25 - INFO - Dataframe saved to C:\Projects\codac\client_data\result.csv
+17-01-2024 11:17:25 - INFO - Program is finished
+18-01-2024 09:18:53 - INFO - Joining two dataframes
+18-01-2024 09:26:34 - INFO - Joining two dataframes
+18-01-2024 09:26:53 - INFO - Joining two dataframes
