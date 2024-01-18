@@ -1,0 +1,7 @@
+drop_columns: ["first_name", "last_name", "cc_n"]
+join_on_column: "id"
+filter_on_column: "country"
+rename_columns: {"id": "client_identifier",
+                "btc_a": "bitcoin_address",
+                "cc_t": "credit_card_type"}
+file_format: "csv"

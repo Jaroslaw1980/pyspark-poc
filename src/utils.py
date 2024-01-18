@@ -3,7 +3,7 @@ import logging
 import os.path
 from logging.handlers import RotatingFileHandler
 
-from src.variables import PATH_FILE_ONE, PATH_FILE_TWO, LOGGER_NAME
+from src.variables import PATH_FILE_ONE, PATH_FILE_TWO, LOGGER_NAME, LOGS_PATH
 
 
 def create_logger() -> logging.Logger:
@@ -14,7 +14,7 @@ def create_logger() -> logging.Logger:
     logger.setLevel(logging.INFO)
 
     log_handler = logging.handlers.RotatingFileHandler(
-        filename=r'C:\Projects\codac\logs\codac.log',
+        filename=LOGS_PATH,
         mode='a',
         maxBytes=10 ** 3 * 3,
         backupCount=5
@@ -43,7 +43,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument('--file_two', type=str, help='Path to file two',
                         default=PATH_FILE_TWO)
     parser.add_argument('--countries', type=str, nargs='+', help='Countries to filter',
-                        default=['Netherland', 'United Kingdom'])
+                        default=['Netherlands', 'United Kingdom'])
 
     args = parser.parse_args()
     return args

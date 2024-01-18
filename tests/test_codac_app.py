@@ -137,5 +137,4 @@ def test_rename_column(df_for_tests, codac):
 
 def test_join_dfs(df_for_tests, df_for_tests2, df_joined, codac):
     df_result = codac.join_dfs(df_for_tests, df_for_tests2, on='id')
-    df_result.show()
     assert_df_equality(df_result, df_joined)
