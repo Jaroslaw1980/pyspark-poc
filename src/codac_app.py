@@ -3,7 +3,7 @@ from logging import Logger
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import col
 from pyspark.sql.types import StructType
-from src.utils import parse_arguments
+from src.utils import parse_arguments, check_if_file_exists, validate_schema
 from src.schemas import Schemas
 from src.variables import OUTPUT_PATH
 
@@ -53,11 +53,16 @@ class CodacApp:
         :rtype pyspark.sql.Dataframe
         """
         self.logger.info(f"Loading file: {file_path}")
+        self.logger.info(f'Checking if file exists in the {file_path}')
+        if not check_if_file_exists(path_to_file=file_path):
+            self.logger.error(f'File in path: {file_path} do not exists')
+            raise FileNotFoundError
         try:
             df = self.spark.read.format('csv') \
                 .option("header", True) \
-                .schema(schema) \
                 .load(file_path)
+            if not validate_schema(df, schema):
+                self.logger.error(f'{schema} for {file_path} is incorrect')
             self.logger.info(f"'Csv loaded with {str(df.count())} rows")
             return df
         except FileNotFoundError:
@@ -78,7 +83,8 @@ class CodacApp:
         """
         self.logger.info(f"Renaming columns")
         for k, v in column_to_rename.items():
-            return df.withColumnRenamed(k, v)
+            df = df.withColumnRenamed(k, v)
+        return df
 
     def filter_data(self, df, column: str, filter_values: list) -> DataFrame:
         """Method to filter specific column in dataframe. It uses list of values to filter after

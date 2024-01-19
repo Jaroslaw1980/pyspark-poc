@@ -2,8 +2,8 @@ import argparse
 import logging
 import os.path
 from logging.handlers import RotatingFileHandler
-
-from src.variables import PATH_FILE_ONE, PATH_FILE_TWO, LOGGER_NAME, LOGS_PATH
+from pyspark.sql import DataFrame
+from src.variables import PATH_FILE_ONE, PATH_FILE_TWO, LOGGER_NAME, LOGS_PATH, ROOT
 
 
 def create_logger() -> logging.Logger:
@@ -49,13 +49,21 @@ def parse_arguments() -> argparse.Namespace:
     return args
 
 
-def check_if_file_exists(file_one: str, file_two: str) -> bool:
+def check_if_file_exists(path_to_file: str) -> bool:
     """This function checks if there are files under the path to load
-    :param file_one: path to a dataset file_one
-    :type file_one str
-    :param file_two: path to dataset file_two
-    :type file_two str
+    :param path_to_file: path to a dataset file_one
+    :type path_to_file str
     :return True of False depending on the files exists
     :rtype Bool
     """
-    return os.path.exists(file_one) and os.path.exists(file_two)
+    return os.path.exists(path_to_file)
+
+
+def validate_schema(df: DataFrame, schema: DataFrame.schema) -> bool:
+    """This function validate if loaded dataframe with correct schema
+    :param df: dataframe on which will be schema validated
+    :type df: DataFrame
+    :param schema: schema used to validation
+    :type schema: DataFrame.schema
+    """
+    return df.schema == schema
