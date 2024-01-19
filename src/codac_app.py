@@ -53,9 +53,11 @@ class CodacApp:
         :rtype pyspark.sql.Dataframe
         """
         self.logger.info(f'Checking if file exists in the {file_path}')
-        if not check_if_file_exists(path_to_file=file_path):
-            self.logger.error(f'File in path: {file_path} do not exists')
-        self.logger.info(f"Loading file: {file_path}")
+        try:
+            check_if_file_exists(path_to_file=file_path)
+            self.logger.info(f"Loading file: {file_path}")
+        except self.logger.error(f'File in path: {file_path} do not exists'):
+            raise FileNotFoundError
         try:
             df = self.spark.read.format('csv') \
                 .option("header", True) \
@@ -142,4 +144,3 @@ class CodacApp:
             self.logger.info(f"Dataframe saved to {file_path}")
         except IOError as error:
             self.logger.error(f"Issue with saving dataframe")
-            self.logger.error(error)
