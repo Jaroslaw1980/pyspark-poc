@@ -25,9 +25,9 @@ def codac(spark_session):
 @pytest.fixture()
 def schema():
     schema = StructType([
-        StructField('id', IntegerType(), nullable=False),
-        StructField('first_name', StringType(), nullable=False),
-        StructField('last_name', StringType(), nullable=False),
+        StructField('id', StringType()),
+        StructField('first_name', StringType()),
+        StructField('last_name', StringType())
     ])
     return schema
 
@@ -35,9 +35,9 @@ def schema():
 @pytest.fixture()
 def schema2():
     schema = StructType([
-        StructField('id', IntegerType(), nullable=False),
-        StructField('city', StringType(), nullable=False),
-        StructField('address', IntegerType(), nullable=False),
+        StructField('id', StringType()),
+        StructField('city', StringType()),
+        StructField('address', IntegerType())
     ])
     return schema
 
@@ -45,11 +45,11 @@ def schema2():
 @pytest.fixture()
 def schema3():
     schema = StructType([
-        StructField('id', IntegerType(), nullable=False),
-        StructField('first_name', StringType(), nullable=False),
-        StructField('last_name', StringType(), nullable=False),
-        StructField('city', StringType(), nullable=False),
-        StructField('address', IntegerType(), nullable=False),
+        StructField('id', StringType()),
+        StructField('first_name', StringType()),
+        StructField('last_name', StringType()),
+        StructField('city', StringType()),
+        StructField('address', IntegerType())
     ])
     return schema
 

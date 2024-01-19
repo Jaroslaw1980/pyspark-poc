@@ -3,9 +3,9 @@ from logging import Logger
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import col
 from pyspark.sql.types import StructType
-from src.utils import parse_arguments, check_if_file_exists, validate_schema, check_files_in_data_folder
+from src.utils import parse_arguments, check_if_file_exists, validate_schema
 from src.schemas import Schemas
-from src.variables import OUTPUT_PATH, PATH_TO_DATA_FOLDER
+from src.variables import OUTPUT_PATH
 
 
 class CodacApp:
@@ -44,19 +44,17 @@ class CodacApp:
         self.logger.info('Program is finished')
 
     def load_data(self, file_path: str, schema: StructType) -> DataFrame:
-        """Method used to load data from csv file to dataframe
-        :param file_path: path to file with data
+        """Method used to load save_test_data from csv file to dataframe
+        :param file_path: path to file with save_test_data
         :type file_path: str
-        :param schema: schema for data to load
+        :param schema: schema for save_test_data to load
         :type schema: StructType
-        :return dataframe containing data from loaded file
+        :return dataframe containing save_test_data from loaded file
         :rtype pyspark.sql.Dataframe
         """
-
         self.logger.info(f'Checking if file exists in the {file_path}')
         if not check_if_file_exists(path_to_file=file_path):
             self.logger.error(f'File in path: {file_path} do not exists')
-            raise FileNotFoundError
         self.logger.info(f"Loading file: {file_path}")
         try:
             df = self.spark.read.format('csv') \
@@ -65,7 +63,7 @@ class CodacApp:
             self.logger.info(f'Validating schema for {file_path}')
             if not validate_schema(df, schema):
                 self.logger.error(f'{schema} for {file_path} is incorrect')
-            self.logger.info(f"'csv loaded with {str(df.count())} rows")
+            self.logger.info(f"csv loaded with {str(df.count())} rows")
             return df
         except IOError:
             self.logger.error(f"Problem with loading {file_path}, IOError")

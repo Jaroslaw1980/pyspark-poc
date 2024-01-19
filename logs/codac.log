@@ -1,29 +1,25 @@
-19-01-2024 09:24:29 - INFO - Droping ['first_name', 'last_name', 'cc_n'] from dataframe
-19-01-2024 09:24:29 - INFO - Filtering column: country by ['Netherlands', 'United Kingdom']
-19-01-2024 09:24:29 - INFO - Droping ['first_name', 'last_name', 'cc_n'] from dataframe
-19-01-2024 09:24:29 - INFO - Joining two dataframes
-19-01-2024 09:24:29 - INFO - Renaming columns
-19-01-2024 09:24:30 - INFO - Dataframe saved to C:\Projects\codac\client_data
-19-01-2024 09:24:30 - INFO - Program is finished
-19-01-2024 09:43:16 - INFO - Droping ['id'] from dataframe
-19-01-2024 09:43:16 - INFO - Renaming columns
-19-01-2024 09:43:16 - INFO - Joining two dataframes
-19-01-2024 09:43:22 - INFO - Filtering column: first_name by ['Hosea', 'Rebekah']
-19-01-2024 09:46:13 - INFO - Droping ['id'] from dataframe
-19-01-2024 09:46:13 - INFO - Filtering column: first_name by ['Hosea', 'Rebekah']
-19-01-2024 09:46:18 - INFO - Joining two dataframes
-19-01-2024 09:46:22 - INFO - Renaming columns
-19-01-2024 10:53:00 - INFO - Program is starting
-19-01-2024 10:53:00 - INFO - Loading file: C:\Projects\codac\raw_data\dataset_one.csv
-19-01-2024 10:53:00 - INFO - Checking if file exists in the C:\Projects\codac\raw_data\dataset_one.csv
-19-01-2024 10:53:05 - INFO - 'Csv loaded with 1000 rows
-19-01-2024 10:53:05 - INFO - Loading file: C:\Projects\codac\raw_data\dataset_two.csv
-19-01-2024 10:53:05 - INFO - Checking if file exists in the C:\Projects\codac\raw_data\dataset_two.csv
-19-01-2024 10:53:05 - INFO - 'Csv loaded with 1000 rows
-19-01-2024 10:53:05 - INFO - Droping ['first_name', 'last_name', 'cc_n'] from dataframe
-19-01-2024 10:53:05 - INFO - Filtering column: country by ['Netherlands', 'United Kingdom']
-19-01-2024 10:53:06 - INFO - Droping ['first_name', 'last_name', 'cc_n'] from dataframe
-19-01-2024 10:53:06 - INFO - Joining two dataframes
-19-01-2024 10:53:06 - INFO - Renaming columns
-19-01-2024 10:53:06 - INFO - Dataframe saved to C:\Projects\codac\client_data
-19-01-2024 10:53:07 - INFO - Program is finished
+19-01-2024 13:44:14 - INFO - Loading file: C:\Projects\codac\tests\e
+19-01-2024 13:44:14 - ERROR - [PATH_NOT_FOUND] Path does not exist: file:/C:/Projects/codac/tests/e.
+19-01-2024 13:44:14 - INFO - Renaming columns
+19-01-2024 13:44:15 - INFO - Dataframe saved to C:\Projects\codac\tests\save_test_data
+19-01-2024 13:44:44 - INFO - Joining two dataframes
+19-01-2024 13:45:22 - INFO - Joining two dataframes
+19-01-2024 13:46:31 - INFO - Joining two dataframes
+19-01-2024 13:47:00 - INFO - Droping ['id'] from dataframe
+19-01-2024 13:47:00 - INFO - Filtering column: first_name by ['Hosea', 'Rebekah']
+19-01-2024 13:47:05 - INFO - Joining two dataframes
+19-01-2024 13:47:09 - INFO - Checking if file exists in the C:\Projects\codac\tests\load_test_data\names.csv
+19-01-2024 13:47:09 - INFO - Loading file: C:\Projects\codac\tests\load_test_data\names.csv
+19-01-2024 13:47:11 - INFO - Validating schema for C:\Projects\codac\tests\load_test_data\names.csv
+19-01-2024 13:47:11 - INFO - csv loaded with 10 rows
+19-01-2024 13:47:11 - INFO - Checking if file exists in the C:\Projects\codac\tests\load_test_data
+19-01-2024 13:47:11 - INFO - Loading file: C:\Projects\codac\tests\load_test_data
+19-01-2024 13:47:11 - INFO - Validating schema for C:\Projects\codac\tests\load_test_data
+19-01-2024 13:47:11 - ERROR - StructType([StructField('id', StringType(), True), StructField('city', StringType(), True), StructField('address', IntegerType(), True)]) for C:\Projects\codac\tests\load_test_data is incorrect
+19-01-2024 13:47:11 - INFO - csv loaded with 10 rows
+19-01-2024 13:47:11 - INFO - Checking if file exists in the C:\Projects\codac\tests\e
+19-01-2024 13:47:11 - ERROR - File in path: C:\Projects\codac\tests\e do not exists
+19-01-2024 13:47:11 - INFO - Loading file: C:\Projects\codac\tests\e
+19-01-2024 13:47:11 - ERROR - [PATH_NOT_FOUND] Path does not exist: file:/C:/Projects/codac/tests/e.
+19-01-2024 13:47:12 - INFO - Renaming columns
+19-01-2024 13:47:13 - INFO - Dataframe saved to C:\Projects\codac\tests\save_test_data
