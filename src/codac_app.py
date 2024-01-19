@@ -3,9 +3,9 @@ from logging import Logger
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import col
 from pyspark.sql.types import StructType
-from src.utils import parse_arguments, check_if_file_exists, validate_schema
+from src.utils import parse_arguments, check_if_file_exists, validate_schema, check_files_in_data_folder
 from src.schemas import Schemas
-from src.variables import OUTPUT_PATH
+from src.variables import OUTPUT_PATH, PATH_TO_DATA_FOLDER
 
 
 class CodacApp:
@@ -52,21 +52,21 @@ class CodacApp:
         :return dataframe containing data from loaded file
         :rtype pyspark.sql.Dataframe
         """
-        self.logger.info(f"Loading file: {file_path}")
+
         self.logger.info(f'Checking if file exists in the {file_path}')
         if not check_if_file_exists(path_to_file=file_path):
             self.logger.error(f'File in path: {file_path} do not exists')
             raise FileNotFoundError
+        self.logger.info(f"Loading file: {file_path}")
         try:
             df = self.spark.read.format('csv') \
                 .option("header", True) \
                 .load(file_path)
+            self.logger.info(f'Validating schema for {file_path}')
             if not validate_schema(df, schema):
                 self.logger.error(f'{schema} for {file_path} is incorrect')
-            self.logger.info(f"'Csv loaded with {str(df.count())} rows")
+            self.logger.info(f"'csv loaded with {str(df.count())} rows")
             return df
-        except FileNotFoundError:
-            self.logger.error(f"Problem with loading file, file doesn't exists")
         except IOError:
             self.logger.error(f"Problem with loading {file_path}, IOError")
         except Exception as error:
