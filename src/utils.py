@@ -4,7 +4,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from pyspark.sql import DataFrame
 
-from src.variables import PATH_FILE_ONE, PATH_FILE_TWO, LOGGER_NAME, LOGS_PATH
+from src.variables import path_file_one, path_file_two, LOGGER_NAME, LOGS_PATH
 
 
 def create_logger() -> logging.Logger:
@@ -40,9 +40,9 @@ def parse_arguments() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('--file_one', type=str, help='Path to file one',
-                        default=PATH_FILE_ONE)
+                        default=path_file_one)
     parser.add_argument('--file_two', type=str, help='Path to file two',
-                        default=PATH_FILE_TWO)
+                        default=path_file_two)
     parser.add_argument('--countries', type=str, nargs='+', help='Countries to filter',
                         default=['Netherlands', 'United Kingdom'])
 

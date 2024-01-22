@@ -4,6 +4,7 @@ from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
 from src.codac_app import CodacApp
 from src.utils import create_logger
+from unittest import mock
 
 
 @pytest.fixture(name='spark_session', scope='session')
@@ -17,9 +18,14 @@ def spark_session(request):
 
 
 @pytest.fixture(scope='session')
-def codac(spark_session):
+def logger():
+    return create_logger()
+
+
+@pytest.fixture(scope='session')
+def codac():
     logger = create_logger()
-    return CodacApp(spark_session, logger)
+    return CodacApp(logger)
 
 
 @pytest.fixture()
@@ -118,3 +124,9 @@ def df_for_tests2(spark_session, data2, schema2):
 @pytest.fixture()
 def df_joined(spark_session, data3, schema3):
     return spark_session.createDataFrame(data=data3, schema=schema3)
+
+
+@pytest.fixture
+def mock_logger():
+    with mock.patch('src.utils.create_logger') as logger:
+        yield logger.return_value

@@ -1,23 +1,22 @@
 from logging import Logger
 
-from pyspark.sql import DataFrame, SparkSession
+from pyspark.sql import DataFrame
 from pyspark.sql.functions import col
 
 from src.file_loader import find_files_in_path, load_data_from_file
+from src.schemas import Schemas
+from src.session import start_session
 from src.utils import parse_arguments
-from src.variables import OUTPUT_PATH, PATH_TO_DATA_FILES, PATH_FILE_ONE, PATH_FILE_TWO
+from src.variables import OUTPUT_PATH, PATH_TO_DATA_FILES, path_file_two, path_file_one
 
 
 class CodacApp:
 
-    def __init__(self, spark: SparkSession, logger: Logger) -> None:
+    def __init__(self, logger: Logger) -> None:
         """The method gets spark session and logger
-        :param spark: a SparkSession object
-        :type spark: SparkSession
         :param logger: a Logger object
         :type logger: Logger
         """
-        self.spark = spark
         self.logger = logger
 
     def run(self, values, column, on, columns_to_rename, file_format):
@@ -26,12 +25,14 @@ class CodacApp:
         """
         self.logger.info('Program is starting')
         args = parse_arguments()
+        spark = start_session()
 
         self.logger.info('Checking for data files in data folder')
         find_files_in_path(PATH_TO_DATA_FILES, self.logger)
 
-        df_1 = load_data_from_file(self.spark, PATH_FILE_ONE, self.logger)
-        df_2 = load_data_from_file(self.spark, PATH_FILE_TWO, self.logger)
+        schemas = [Schemas.dataset_one_schema, Schemas.dataset_two_schema]
+        df_1 = load_data_from_file(spark, path_file_one, self.logger, schemas)
+        df_2 = load_data_from_file(spark, path_file_two, self.logger, schemas)
 
         df_1_dropped = self.drop_column(df_1, values)
         df_filtered = self.filter_data(df_1_dropped, column, args.countries)
@@ -41,7 +42,7 @@ class CodacApp:
         df_output = self.rename_column(df_joined, columns_to_rename)
         self.save_data(df_output, file_format, file_path=OUTPUT_PATH)
 
-        self.spark.stop()
+        spark.stop()
 
         self.logger.info('Program is finished')
 

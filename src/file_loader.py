@@ -1,9 +1,11 @@
+import os
+from logging import Logger
+
+from pyspark.sql import DataFrame, SparkSession
+
+import src.variables
 from src.schemas import Schemas
 from src.utils import validate_schema
-from pyspark.sql import DataFrame, SparkSession
-from logging import Logger
-import src.variables
-import os
 
 
 def find_files_in_path(path: str, logger: Logger) -> None:
@@ -24,10 +26,11 @@ def find_files_in_path(path: str, logger: Logger) -> None:
         src.variables.file_two = data_files[1]
     else:
         logger.error('There are wrong number of files in the folder')
+        raise Exception
 
 
-def load_data_from_file(spark: SparkSession, file_path: str, logger: Logger) -> DataFrame:
-    """Method used to load data from raw data_file
+def load_data_from_file(spark: SparkSession, file_path: str, logger: Logger, schemas) -> DataFrame:
+    """Function used to load data from raw data_file
     :param spark: a SparkSession object
     :type spark: SparkSession
     :param file_path: file path to the raw data_file
@@ -39,12 +42,16 @@ def load_data_from_file(spark: SparkSession, file_path: str, logger: Logger) -> 
     """
     logger.info(f"Loading data from the file: {file_path}")
     df = spark.read.format('csv').option("header", "true").load(file_path)
-    schemas = [Schemas.dataset_one_schema, Schemas.dataset_two_schema]
+    # schemas = [Schemas.dataset_one_schema, Schemas.dataset_two_schema]
+    logger.info(f"Finding correct schema for {file_path}")
     try:
         for schema in schemas:
             if validate_schema(df, schema):
-                logger.info(f"correct schema for {df} is {schema}")
-    except logger.error('There is no correct schema for dataframe'):
+                logger.info(f"correct schema for {df} is {schema} is found")
+                break
+            else:
+                logger.error('There is no correct schema for dataframe')
+    except logger.error('Something is wrong with Dataframe'):
         raise Exception
     logger.info('Dataframe loaded')
     return df
