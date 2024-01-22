@@ -1,29 +1,10 @@
-22-01-2024 12:55:11 - INFO - Renaming columns
-22-01-2024 12:55:11 - INFO - Renaming columns
-22-01-2024 12:55:12 - INFO - Dataframe saved to C:\Users\jnazar\AppData\Local\Temp\pytest-of-jnazar\pytest-7\test_save_data0
-22-01-2024 12:55:12 - INFO - Dataframe saved to C:\Users\jnazar\AppData\Local\Temp\pytest-of-jnazar\pytest-7\test_save_data0
-22-01-2024 12:56:36 - INFO - Droping ['id'] from dataframe
-22-01-2024 12:56:36 - INFO - Filtering column: first_name by ['Hosea', 'Rebekah']
-22-01-2024 12:56:41 - INFO - Joining two dataframes
-22-01-2024 12:56:46 - INFO - Loading data from the file: C:\Projects\codac\tests\load_test_data
-22-01-2024 12:56:46 - INFO - Loading data from the file: C:\Projects\codac\tests\load_test_data
-22-01-2024 12:56:47 - INFO - Finding correct schema for: C:\Projects\codac\tests\load_test_data
-22-01-2024 12:56:47 - INFO - Finding correct schema for: C:\Projects\codac\tests\load_test_data
-22-01-2024 12:56:47 - INFO - Correct schema for DataFrame[id: string, first_name: string, last_name: string] is StructType([StructField('id', StringType(), True), StructField('first_name', StringType(), True), StructField('last_name', StringType(), True)]) is found
-22-01-2024 12:56:47 - INFO - Correct schema for DataFrame[id: string, first_name: string, last_name: string] is StructType([StructField('id', StringType(), True), StructField('first_name', StringType(), True), StructField('last_name', StringType(), True)]) is found
-22-01-2024 12:56:47 - INFO - Dataframe loaded
-22-01-2024 12:56:47 - INFO - Dataframe loaded
-22-01-2024 12:56:47 - INFO - Loading data from the file: C:\Projects\codac\tests\load_test_data\names.csv
-22-01-2024 12:56:47 - INFO - Loading data from the file: C:\Projects\codac\tests\load_test_data\names.csv
-22-01-2024 12:56:47 - INFO - Finding correct schema for: C:\Projects\codac\tests\load_test_data\names.csv
-22-01-2024 12:56:47 - INFO - Finding correct schema for: C:\Projects\codac\tests\load_test_data\names.csv
-22-01-2024 12:56:47 - ERROR - There is no correct schema for dataframe
-22-01-2024 12:56:47 - ERROR - There is no correct schema for dataframe
-22-01-2024 12:56:47 - ERROR - There is no correct schema for dataframe
-22-01-2024 12:56:47 - ERROR - There is no correct schema for dataframe
-22-01-2024 12:56:47 - INFO - Dataframe loaded
-22-01-2024 12:56:47 - INFO - Dataframe loaded
-22-01-2024 12:56:47 - INFO - Renaming columns
-22-01-2024 12:56:47 - INFO - Renaming columns
-22-01-2024 12:56:48 - INFO - Dataframe saved to C:\Users\jnazar\AppData\Local\Temp\pytest-of-jnazar\pytest-8\test_save_data0
-22-01-2024 12:56:48 - INFO - Dataframe saved to C:\Users\jnazar\AppData\Local\Temp\pytest-of-jnazar\pytest-8\test_save_data0
+22-01-2024 21:36:34 - INFO - Loaded file: C:\Projects\codac\raw_data\dataset_one.csv with schema: StructType([StructField('id', StringType(), True), StructField('first_name', StringType(), True), StructField('last_name', StringType(), True), StructField('email', StringType(), True), StructField('country', StringType(), True)])
+22-01-2024 21:36:34 - INFO - Loaded file: C:\Projects\codac\raw_data\dataset_one.csv with schema: StructType([StructField('id', StringType(), True), StructField('btc_a', StringType(), True), StructField('cc_t', StringType(), True), StructField('cc_n', StringType(), True)])
+22-01-2024 21:47:54 - INFO - Loading data from the file: C:\Projects\codac\tests\load_test_data
+22-01-2024 21:47:59 - INFO - Finding correct schema for: C:\Projects\codac\tests\load_test_data
+22-01-2024 21:47:59 - INFO - Correct schema for DataFrame[id: string, first_name: string, last_name: string] is StructType([StructField('id', StringType(), True), StructField('first_name', StringType(), True), StructField('last_name', StringType(), True)]) is found
+22-01-2024 21:47:59 - INFO - Dataframe loaded
+22-01-2024 21:48:55 - INFO - Loading data from the file: C:\Projects\codac\tests\load_test_data
+22-01-2024 21:49:00 - INFO - Finding correct schema for: C:\Projects\codac\tests\load_test_data
+22-01-2024 21:49:00 - INFO - Correct schema for DataFrame[id: string, first_name: string, last_name: string] is StructType([StructField('id', StringType(), True), StructField('first_name', StringType(), True), StructField('last_name', StringType(), True)]) is found
+22-01-2024 21:49:00 - INFO - Dataframe loaded

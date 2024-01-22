@@ -4,7 +4,7 @@ from src.file_loader import find_files_in_path
 
 
 def test_find_files_with_zero_files(tmpdir, mock_logger):
-    # temporary directory without files
+
     path = str(tmpdir)
 
     with pytest.raises(FileNotFoundError):

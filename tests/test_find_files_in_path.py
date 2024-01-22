@@ -5,7 +5,7 @@ import src
 
 
 def test_find_files_with_valid_path(mock_logger, tmpdir):
-    # test for finding files in path folder
+
     tmpdir.join("data_file_one.csv").write("")
     tmpdir.join("data_file_two.csv").write("")
 
