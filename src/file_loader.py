@@ -21,7 +21,7 @@ def find_files_in_path(path: str, logger: Logger) -> None:
         logger.error('Found zero files')
         raise FileNotFoundError
     elif len(data_files) == 2:
-        logger.info('Found 2 files, returning files names')
+        logger.info('Found 2 files, setting files names into variables')
         src.variables.file_one = data_files[0]
         src.variables.file_two = data_files[1]
     else:
@@ -43,11 +43,11 @@ def load_data_from_file(spark: SparkSession, file_path: str, logger: Logger, sch
     logger.info(f"Loading data from the file: {file_path}")
     df = spark.read.format('csv').option("header", "true").load(file_path)
     # schemas = [Schemas.dataset_one_schema, Schemas.dataset_two_schema]
-    logger.info(f"Finding correct schema for {file_path}")
+    logger.info(f"Finding correct schema for: {file_path}")
     try:
         for schema in schemas:
             if validate_schema(df, schema):
-                logger.info(f"correct schema for {df} is {schema} is found")
+                logger.info(f"Correct schema for {df} is {schema} is found")
                 break
             else:
                 logger.error('There is no correct schema for dataframe')
