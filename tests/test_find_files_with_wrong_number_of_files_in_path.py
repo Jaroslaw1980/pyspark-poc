@@ -4,7 +4,6 @@ from src.file_loader import find_files_in_path
 
 
 def test_find_files_with_wrong_number_of_files(tmpdir, mock_logger):
-
     tmpdir.join("file1.csv").write("")
     tmpdir.join("file2.csv").write("")
     tmpdir.join("file3.csv").write("")
