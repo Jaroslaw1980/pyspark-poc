@@ -1,16 +1,4 @@
-19-01-2024 14:08:52 - INFO - Filtering column: first_name by ['Hosea', 'Rebekah']
-19-01-2024 14:08:57 - INFO - Joining two dataframes
-19-01-2024 14:09:01 - INFO - Checking if file exists in the C:\Projects\codac\tests\load_test_data\names.csv
-19-01-2024 14:09:01 - INFO - Loading file: C:\Projects\codac\tests\load_test_data\names.csv
-19-01-2024 14:09:03 - INFO - Validating schema for C:\Projects\codac\tests\load_test_data\names.csv
-19-01-2024 14:09:03 - INFO - csv loaded with 10 rows
-19-01-2024 14:09:03 - INFO - Checking if file exists in the C:\Projects\codac\tests\load_test_data
-19-01-2024 14:09:03 - INFO - Loading file: C:\Projects\codac\tests\load_test_data
-19-01-2024 14:09:03 - INFO - Validating schema for C:\Projects\codac\tests\load_test_data
-19-01-2024 14:09:03 - ERROR - StructType([StructField('id', StringType(), True), StructField('city', StringType(), True), StructField('address', IntegerType(), True)]) for C:\Projects\codac\tests\load_test_data is incorrect
-19-01-2024 14:09:03 - INFO - csv loaded with 10 rows
-19-01-2024 14:09:03 - INFO - Checking if file exists in the C:\Projects\codac\tests\e
-19-01-2024 14:09:03 - INFO - Loading file: C:\Projects\codac\tests\e
-19-01-2024 14:09:03 - ERROR - [PATH_NOT_FOUND] Path does not exist: file:/C:/Projects/codac/tests/e.
-19-01-2024 14:09:03 - INFO - Renaming columns
-19-01-2024 14:09:04 - INFO - Dataframe saved to C:\Projects\codac\tests\save_test_data
+22-01-2024 10:25:39 - INFO - Program is finished
+22-01-2024 10:26:38 - INFO - Program is starting
+22-01-2024 10:26:38 - INFO - Checking for data files in data folder
+22-01-2024 10:26:38 - ERROR - Found zero files

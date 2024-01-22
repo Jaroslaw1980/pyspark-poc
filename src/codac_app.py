@@ -2,10 +2,10 @@ from logging import Logger
 
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import col
-from pyspark.sql.types import StructType
-from src.utils import parse_arguments, check_if_file_exists, validate_schema
-from src.schemas import Schemas
-from src.variables import OUTPUT_PATH
+
+from src.file_loader import find_files_in_path, load_data_from_file
+from src.utils import parse_arguments
+from src.variables import OUTPUT_PATH, PATH_TO_DATA_FILES, PATH_FILE_ONE, PATH_FILE_TWO
 
 
 class CodacApp:
@@ -24,12 +24,14 @@ class CodacApp:
         """
         Method to run all flow process. Parameters comes from config.yaml
         """
-
         self.logger.info('Program is starting')
         args = parse_arguments()
 
-        df_1 = self.load_data(file_path=args.file_one, schema=Schemas.dataset_one_schema)
-        df_2 = self.load_data(file_path=args.file_two, schema=Schemas.dataset_two_schema)
+        self.logger.info('Checking for data files in data folder')
+        find_files_in_path(PATH_TO_DATA_FILES, self.logger)
+
+        df_1 = load_data_from_file(self.spark, PATH_FILE_ONE, self.logger)
+        df_2 = load_data_from_file(self.spark, PATH_FILE_TWO, self.logger)
 
         df_1_dropped = self.drop_column(df_1, values)
         df_filtered = self.filter_data(df_1_dropped, column, args.countries)
@@ -42,35 +44,6 @@ class CodacApp:
         self.spark.stop()
 
         self.logger.info('Program is finished')
-
-    def load_data(self, file_path: str, schema: StructType) -> DataFrame:
-        """Method used to load save_test_data from csv file to dataframe
-        :param file_path: path to file with save_test_data
-        :type file_path: str
-        :param schema: schema for save_test_data to load
-        :type schema: StructType
-        :return dataframe containing save_test_data from loaded file
-        :rtype pyspark.sql.Dataframe
-        """
-        self.logger.info(f'Checking if file exists in the {file_path}')
-        try:
-            check_if_file_exists(path_to_file=file_path)
-            self.logger.info(f"Loading file: {file_path}")
-        except self.logger.error(f'File in path: {file_path} do not exists'):
-            raise FileNotFoundError
-        try:
-            df = self.spark.read.format('csv') \
-                .option("header", True) \
-                .load(file_path)
-            self.logger.info(f'Validating schema for {file_path}')
-            if not validate_schema(df, schema):
-                self.logger.error(f'{schema} for {file_path} is incorrect')
-            self.logger.info(f"csv loaded with {str(df.count())} rows")
-            return df
-        except IOError:
-            self.logger.error(f"Problem with loading {file_path}, IOError")
-        except Exception as error:
-            self.logger.error(error)
 
     def rename_column(self, df, column_to_rename: dict) -> DataFrame:
         """Method rename sepecific column in dataframe using given dictionary
@@ -143,4 +116,4 @@ class CodacApp:
             df.write.format(file_format).mode('overwrite').option("header", "true").save(file_path)
             self.logger.info(f"Dataframe saved to {file_path}")
         except IOError as error:
-            self.logger.error(f"Issue with saving dataframe")
+            self.logger.error(error)
