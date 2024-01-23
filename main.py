@@ -8,8 +8,11 @@ if __name__ == "__main__":
         config = yaml.load(file, Loader=yaml.FullLoader)
     logger = create_logger()
     codac = CodacApp(logger)
-    codac.run(values=config['drop_columns'],
+    codac.run(load_file_format=config['load_file_format'],
+              columns_to_drop=config['drop_columns'],
               column=config['filter_on_column'],
+              join_method=config['join_method'],
               on=config['join_on_column'],
               columns_to_rename=config['rename_columns'],
-              file_format=config['file_format'])
+              save_file_format=config['save_file_format'],
+              mode=config['saving_mode'])
