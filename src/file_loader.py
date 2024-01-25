@@ -32,15 +32,15 @@ def find_files_in_path(path: str, logger: Logger) -> None:
         raise ValueError(f"Expected two files, but found {len(data_files_filtered)} files")
 
 
-def load_data_from_file(spark: SparkSession, load_file_format: str, save_file_path: str,
+def load_data_from_file(spark: SparkSession, load_file_format: str, load_file_path: str,
                         logger: Logger, schema: DataFrame.schema) -> DataFrame:
     """Function used to load data from raw data_file
     :param spark: a SparkSession object
     :type spark: SparkSession
     :param load_file_format: paramter for format on which dataframe should be loaded
     :type load_file_format: str
-    :param save_file_path: file path to the raw data_file
-    :type save_file_path: str
+    :param load_file_path: file path to load data
+    :type load_file_path: str
     :param logger: a Logger object
     :type logger: Logger
     :param schema: list of schemas from Schemas dataclass
@@ -48,7 +48,7 @@ def load_data_from_file(spark: SparkSession, load_file_format: str, save_file_pa
     :return loaded dataframe
     :rtype dataframe
     """
-    logger.info(f"Loading data from the file path: {save_file_path}")
-    df = spark.read.format(load_file_format).option("header", "true").schema(schema).load(save_file_path)
+    logger.info(f"Loading data from the file path: {load_file_path}")
+    df = spark.read.format(load_file_format).option("header", "true").schema(schema).load(load_file_path)
     logger.info('Dataframe loaded')
     return df

@@ -15,4 +15,4 @@ def test_find_files_with_wrong_number_of_files(tmpdir, mock_logger):
 
     assert mock_logger.error.call_count == 1
     assert mock_logger.error.call_args[0][0] == 'There are wrong number of files in the folder'
-    assert mock_logger.info.call_count == 0
+    assert mock_logger.info.call_count == 1

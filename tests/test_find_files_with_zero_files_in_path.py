@@ -11,5 +11,5 @@ def test_find_files_with_zero_files(tmpdir, mock_logger):
         find_files_in_path(path, mock_logger)
 
     assert mock_logger.error.call_count == 1
-    assert mock_logger.error.call_args[0][0] == 'Found zero files'
-    assert mock_logger.info.call_count == 0
+    assert mock_logger.error.call_args[0][0] == 'Found zero data files'
+    assert mock_logger.info.call_count == 1

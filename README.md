@@ -16,9 +16,11 @@ one can forego the issue of having the data stored along with the code in a code
 ### Examples
 ```
 python main.py --users raw_data/dataset_one.csv --transactions raw_data/dataset_two.csv --countries "France" "Netherlands"
-
+```
+```
 python main.py --users raw_data/dataset_one.csv --transactions raw_data/dataset_two.csv --countries "United Kingdom"
-
+```
+```
 python -m pytest -v
 ```
 
